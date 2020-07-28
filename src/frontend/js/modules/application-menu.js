@@ -3,7 +3,7 @@ const { applyPolyfills, defineCustomElements } = require('esn-frontend-applicati
 applyPolyfills().then(() => defineCustomElements());
 
 // TODO: Write tests for this
-angular.module('esn.application-menu', ['op.dynamicDirective'])
+angular.module('esn.application-menu')
   .directive('applicationMenuToggler', function() {
     return {
       restrict: 'E',
@@ -11,30 +11,7 @@ angular.module('esn.application-menu', ['op.dynamicDirective'])
       replace: true,
       template: require("../../views/modules/application-menu/application-menu-toggler.pug"),
       link: function($scope) {
-        const defaultAppGridItems = JSON.stringify([
-          {
-            name: 'Calendar',
-            url: 'http://localhost:9900/#/calendar'
-          },
-          {
-            name: 'Contacts',
-            url: 'http://localhost:9900/#/contacts'
-          },
-          {
-            name: 'Inbox',
-            url: 'http://localhost:9900/#/unifiedinbox/inbox'
-          },
-          {
-            name: 'Admin',
-            url: 'http://localhost:9900/#/admin'
-          },
-          {
-            name: 'LinShare',
-            url: 'http://localhost:30000'
-          }
-        ]);
-
-        $scope.appGridItems = process.env.APP_GRID_ITEMS || defaultAppGridItems;
+        $scope.appGridItems = process.env.APP_GRID_ITEMS;
       }
     };
   });
