@@ -1,9 +1,9 @@
-const { applyPolyfills, defineCustomElements } = require('esn-frontend-application-grid/loader');
+const { applyPolyfills, defineCustomElements } = require('esn-frontend-application-grid/loader/index.cjs');
 
 applyPolyfills().then(() => defineCustomElements());
 
 // TODO: Write tests for this
-angular.module('esn.application-menu')
+angular.module('esn.application-menu', [])
   .directive('applicationMenuToggler', function($log) {
     return {
       restrict: 'E',
